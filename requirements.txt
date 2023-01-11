@@ -1,0 +1,15 @@
+python-rtmidi
+scamp
+scamp-extensions
+
+scikit-learn
+PyAutoGUI
+Pillow
+imutils
+mediapipe
+
+opencv-python
+pandas
+requests
+spotipy
+
