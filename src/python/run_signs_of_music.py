@@ -47,13 +47,14 @@ with hand_detect.mp_hands.Hands(
         for lm, mp_lm in hand_detect.detect_hand(hands=hands,
                                           image=raw_frame,
                                          ):
-            # print(mp_lm)
             hand_detect.mp_drawing.draw_landmarks(image, mp_lm, hand_detect.mp_hands.HAND_CONNECTIONS)
 
-            # print(lm[8])
-
-            print(120 * (1-lm[8][1]), lm[8][0])
-            piano.play_note( -lm[8][1] * 16 + 44, lm[8][0], 0.1)
+            print([int(-lm[8][1] * 20 + 56), int(-lm[8][1] * 20 + 56) + int((lm[4][1]-lm[8][1]) * 20)])
+            piano.play_chord(
+                #[int(-lm[8][1] * 20 + 56), int((lm[4][1]-lm[8][1])*40 + 56)],
+                [int(-lm[8][1] * 20 + 56), int(-lm[8][1] * 20 + 56) + int((lm[4][1]-lm[8][1]) * 20)],
+                lm[8][0],
+                0.1)
 
         key = (cv2.waitKey(10) & 0xFF)
 
